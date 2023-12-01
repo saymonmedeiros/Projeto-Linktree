@@ -80,10 +80,11 @@ body * {
   z-index: 1; /* altera os andares das camadas */
   left: 0; /* left= mover para esquerda*/
   transform: translateY(-50%);
+
+  animation: slide-back 0.2s;
 }
 .light #switch button {
-  right: 0%; /* right= mover para direita*/
-  left: initial; /* posição inicial= esquerda */
+  animation: slide-in 0.2s forwards;
 }
 
 #switch span {
@@ -95,6 +96,10 @@ body * {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 9999px; /* bordas aredondadas */
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 ul {
@@ -152,12 +157,29 @@ footer {
   font-size: 14px; /* tamanho da fonte */
 }
 
-@media (min-width: 700px){
-   :root{
+@media (min-width: 700px) {
+  :root {
     --bg-url: url(./assets/bg-desktop.jpg);
-   }
-   .light {
-   --bg-url: url(./assets/bg-desktop-ligth.jpg)
   }
+  .light {
+    --bg-url: url(./assets/bg-desktop-ligth.jpg);
+  }
+}
 
-}                
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
